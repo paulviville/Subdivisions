@@ -5,7 +5,7 @@ import { loadCMap2 } from './CMapJS/IO/SurfaceFormats/CMap2IO.js';
 
 import Renderer from './CMapJS/Rendering/Renderer.js';
 import { OrbitControls } from './CMapJS/Libs/OrbitsControls.js';
-
+import MeshHandler from './MeshHandler.js';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xAAAAAA);
@@ -35,17 +35,9 @@ pointLight.position.set(10,8,5);
 scene.add(pointLight);
 
 
-const mesh = loadCMap2('off', Meshes.octahedron_off);
-const meshRenderer = new Renderer(mesh);
-
-meshRenderer.vertices.create();
-meshRenderer.vertices.addTo(scene);
-meshRenderer.edges.create();
-meshRenderer.edges.addTo(scene);
-meshRenderer.faces.create();
-meshRenderer.faces.addTo(scene);
-
-
+let meshHandler = new MeshHandler(loadCMap2('off', Meshes.octahedron_off));
+meshHandler.initialize({vertices: true, edges: true, faces: true});
+meshHandler.addMeshesTo(scene);
 function render()
 {
 	renderer.render(scene, camera);
