@@ -96,19 +96,19 @@ function subdivideMesh (scheme) {
 		case 'catmullClark':
 			catmullClark(cmap);
 			break;
-		case 'loop':
+		case 'loop △':
 			loop(cmap);
 			break;
-		case 'sqrt2':
+		case 'sqrt2 □':
 			sqrt2(cmap);
 			break;
-		case 'sqrt3':
+		case 'sqrt3 △':
 			sqrt3(cmap);
 			break;
 		case 'doosabin':
 			dooSabin(cmap);
 			break;
-		case 'butterfly':
+		case 'butterfly △':
 			butterfly(cmap);
 			break;	
 		default:
@@ -130,7 +130,7 @@ settingsFolder.add(settings, 'vertexSize').min(0.001).max(0.1).step(0.001).onCha
 settingsFolder.add(settings, 'edgeSize').min(0.2).max(5).step(0.05).onChange(settings.edgeResize);
 
 gui.add(settings, 'mesh', ['tetrahedron', 'cube', 'octahedron', 'dodecahedron', 'icosahedron']).onChange(loadMesh);
-gui.add(settings, 'subdivision', ['catmullClark', 'loop', 'sqrt2', 'sqrt3', 'doosabin', 'butterfly']);
+gui.add(settings, 'subdivision', ['catmullClark', 'loop △', 'sqrt2 □', 'sqrt3 △', 'doosabin', 'butterfly △']);
 gui.add(settings, 'apply');
 loadMesh(settings.mesh);
 
